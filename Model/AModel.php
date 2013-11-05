@@ -2,7 +2,7 @@
 
 include_once "../Configuration/DAL.php";
 
-include_once "./IModel.php";
+include_once "IModel.php";
 /**
  * Description of AModel
  *
@@ -13,7 +13,7 @@ abstract class AModel implements IModel{
     
     public function AModel(){
         $dal = new DAL();
-        $con = $dal->connect();
+        $this->con = $dal->connect();
     }
 }
 

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>INICIO SESION</title>
+<link href="css/960.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/reset.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/text.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/login.css" rel="stylesheet" type="text/css" media="all" />
+</head>
+
+<body>
+<div class="container_16">
+  <div class="grid_6 prefix_5 suffix_5">
+   	  <h1>Iniciar Sesion</h1>
+    	<div id="login">
+    	  <p class="tip"></p>
+          <p class="error">Datos Obligatorios!</p>        
+    	  <form id="form1" name="form1" method="post" action="validacion.php">
+    	    <p>
+    	      <label><strong>Usuario</strong>
+<input type="text" name="usuario" class="inputText" id="usuario" required/>
+    	      </label>
+  	      </p>
+    	    <p>
+    	      <label><strong>Contraseña</strong>
+  <input type="password" name="pass" class="inputText" id="pass" required/>
+  	        </label>
+    	    </p>
+    	
+        <input class="black_button" type="submit" name="action" id="enviar" value="Enviar">  
+             <label>
+             <input type="checkbox" name="checkbox" id="checkbox" />
+              Recordarme</label>            
+    	  </form>
+		  <br clear="all" />
+    	</div>
+        <div id="forgot">
+        <a href="#" class="forgotlink"><span>Olvido Usuario y/o Contraseña?</span></a></div>
+  </div>
+</div>
+<br clear="all" />
+</body>
+</html>

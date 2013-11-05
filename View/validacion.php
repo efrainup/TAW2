@@ -1,6 +1,12 @@
  <?php 
+include "../Controller/SessionManager.php";
+include_once "../Model/Usuario.php";
+
+ 
+
+ 
 session_start();
-$con = mysql_connect("localhost","root","");
+/*$con = mysql_connect("localhost","root","");
 	$opcion = $_POST['action'];
 			if (!$con)
   {
@@ -36,7 +42,23 @@ mysql_select_db("universidad", $con);
 		
 			}
 		}
-		mysql_close($con);	
-		
+		mysql_close($con);	*/
+
+
+		$usuario = new Usuario();
+                $usuario->usuario = $_POST['usuario'];
+                $usuario->password = $_POST['pass'];
+                
+                if($usuario->Login()){
+                    SessionManager::setUsuario($usuario);
+                    
+                    if($usuario->administrador){
+                        header("Location:indexadmin.php");
+                    }else{
+                        header("Location:indexmaestro.php");
+                    }
+                }else{
+                    header("Location:index.html");
+                }
 		
 		?>

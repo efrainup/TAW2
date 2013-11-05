@@ -1,4 +1,7 @@
-    
+<?php 
+include_once '../Controller/SessionManager.php';
+?>
+
        <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
           <ul class="nav navbar-nav side-nav">
@@ -55,7 +58,7 @@
               </ul>
             </li>
             <li class="dropdown user-dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user"></i>Administrador<b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user"></i><?php SessionManager::getNombreUsuario()?><b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="#"><i class="icon-power-off"></i> Log Out</a></li>
               </ul>

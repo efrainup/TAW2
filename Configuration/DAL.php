@@ -7,18 +7,18 @@
 
 class DAL{
     //put your code here
-    private $db = "universidad";
-    private $host = "localhost";
-    private $pass = "";
-    private $usuario = "root";
-    private $con = null;
+    public $db = "universidad";
+    public $host = "localhost";
+    public $pass = "";
+    public $usuario = "root";
+    public $con = null;
     
     public function connect() {
-        $con = new mysqli();
+        $this->con = new mysqli();
+
+        $this->con->connect($this->host, $this->usuario, $this->pass, $this->db);
         
-        $con->connect($host, $usuario, $pass, $db);
-        
-        return $con; 
+        return $this->con; 
     }         
 }
 
