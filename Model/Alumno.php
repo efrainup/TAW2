@@ -35,6 +35,7 @@ class Alumno extends AModel{
     }
     
     public function Read() {
+        
         $result = $this->con->query("call readAlumnos(0);");
         if($result){
             $arreglo = array();
