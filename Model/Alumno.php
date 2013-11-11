@@ -14,8 +14,11 @@ include_once "AModel.php";
  */
 class Alumno extends AModel{
     
+    public $Id_Alumno;
     public $Nombre;
     public $Matricula;
+    public $Id_Carrera;
+    public $NombreCarrera;
     private $_Asistencia;
     
     public function __construct() {
@@ -25,7 +28,7 @@ class Alumno extends AModel{
     }
     
     public function Create() {
-        $this->con->query("call createAlumno('{$this->Nombre}','{$this->Matricula}');");
+        $this->con->query("call createAlumno('{$this->Nombre}','{$this->Matricula}','{$this->Id_Carrera}');");
         return $this->con->errno;
     }
 
@@ -62,7 +65,20 @@ class Alumno extends AModel{
      */
     public function pasarLista($grupo, $asistencia=NULL){
         
-        //$fecha = new DateTime();
+        $resut = $this->con->query("call readAsistencia('{$this->Id_Alumno}','{$grupo}');");
+        
+        if($resut){
+            $obj = $resut->fetch_array();
+            
+            $arr = json_decode($obj["Asistencia"]);
+            
+            //$arr[] = ;
+            
+            
+            
+        }else{
+            return $this->con->errno;
+        }
         
         
         

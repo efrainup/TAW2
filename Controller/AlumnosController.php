@@ -20,7 +20,7 @@
         
         $alumno->Nombre = $_REQUEST["Nombre"];
         $alumno->Matricula = $_REQUEST["Matricula"];
-        
+        $alumno->Id_Carrera = $_REQUEST["Carrera"];
         if($alumno->Create()){
             throw new Exception("Error al crear alumno");
         }
