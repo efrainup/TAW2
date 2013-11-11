@@ -76,12 +76,20 @@
                   
         <tr>
           <th width="173" scope="row">Carrera</th>
-          <td width="725"><label for="categoria"></label>
-            <SELECT NAME="categoria" SIZE=1 > 
-                    <OPTION VALUE="default">Seleccione una Opcion</OPTION>
-                  <OPTION VALUE="deportes">Iti</OPTION>
-                  <OPTION VALUE="sociales">Mecatronica</OPTION>
-                  <OPTION VALUE="cultura">Manufactura</OPTION>
+          <td width="725"><label for="Carrera"></label>
+            <SELECT NAME="Carrera" SIZE=1 > 
+                    <OPTION VALUE="-1">Seleccione una Opcion</OPTION>
+                    
+                    <?php
+                    include_once '../Model/Carrera.php';
+                    $carrera = new Carrera();
+                    
+                    $carreras = $carrera->Read();
+                    
+                    foreach($carreras as $row){
+                        echo "<OPTION VALUE=\"{$row->Id_Carrera}\">{$row->Nombre}</OPTION>";
+                    }
+                    ?>
         </SELECT>          </tr>
   	
       </table>
