@@ -57,8 +57,8 @@
                 <h3 align="center" class="panel-title"><i class="icon-user"></i> Ingresar Nuevo Alumno</h3>
               </div>
 			  <div>
-  <form action="resultado17.php" method="POST" enctype="multipart/form-data">
-
+  <form action="../Controller/AlumnosController.php" method="POST" enctype="multipart/form-data">
+      <input type="hidden" name="Accion" value="C"/>
     <div align="center">
       <table width="82%" class="table table-bordered" >
   			<tr >
@@ -66,12 +66,12 @@
           <div align="left">Matricula</div>
           </label></th>
           <td><label for="fecha"></label>
-          <input class="input-block-level" type="text" placeholder=".input-block-level">
+          <input class="input-block-level" type="text" placeholder=".input-block-level" name="Matricula">
         </tr>
 		<tr>
           <th width="173" scope="row">Nombre</th>
           <td width="725"><label for="nombre"></label>
-        <input class="input-block-level" type="text" placeholder=".input-block-level">
+        <input class="input-block-level" type="text" placeholder=".input-block-level" name="Nombre">
         </tr>
                   
         <tr>

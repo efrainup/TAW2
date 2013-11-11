@@ -1,7 +1,9 @@
 <?php
 
 include_once "ISessionManager.php";
+include_once '../Model/Usuario.php';
 
+session_start();
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -16,7 +18,16 @@ include_once "ISessionManager.php";
 class SessionManager{
     private static $usuario;
     
+    private static function isSomeoneLogged(){
+        if(isset($_SESSION["Usuario"]) && $_SESSION["Usuario"]!=null)
+            return true;
+        else 
+            return false;
+    }
+
+
     public static function getNombreUsuario() {
+        self::$usuario = $_SESSION["Usuario"];
         return self::$usuario->nombre;
     }
 

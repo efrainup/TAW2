@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -61,7 +60,20 @@
         <th scope="col"><div align="left">
           <a href="alta-alumno.php"><span style="color: blue;"><strong>Agregar Alumno </strong></span></a>
           <?php 	
-		  include('conexion.php');		
+          
+          include_once '../Model/Alumno.php';
+          
+          $alumno = new Alumno();
+          
+          //echo "<div align=\"center\"><table border=5><td>ID</td><td>Matricula</td><td>Nombre</td><td>Carrera</td><td>Modificar</td><td>Eliminar</td></div><br>";
+          $alumnos = $alumno->Read();
+          foreach($alumnos as $row){
+              echo "<tr><td>".$row->Nombre."</td><td>".$row->Matricula."</td><td>".$row->Nombre."</td><!--td>".$row->Matricula."</td--><td><a href='../Controller/AlumnosController.php?Accion=U&Matricula=".$row->Matricula." '> Modificar</a></td><td><a href='../Controller/AlumnosController.php?Accion=D&Matricula=".$row->Matricula."'> Eliminar</a></td>";
+          }
+          
+          
+          
+		 /* include('conexion.php');		
 		$query = "SELECT * FROM alumnos  ";
 		$dato='matricula';
 if ( mysql_query($query)){
@@ -74,7 +86,7 @@ if ( mysql_query($query)){
 
 	else{
 		echo("QUERY INCORRECTO :(");
-}
+}*/
 
 		?>        </th>
       </tr>
