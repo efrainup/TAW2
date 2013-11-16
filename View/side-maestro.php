@@ -10,6 +10,12 @@
 				         <li><a class="icon-remove" href="#">Baja de Unidad</a></li>
               </ul>
             </li>
+            <li><a href="MateriasMaestro.php"><i class="icon-pencil"></i> Materias</a></li>
+            <li><a href="GruposMaestro.php"><i class="icon-pencil"></i> Grupos</a></li>
+            
+            
+            
+            
           
           </ul>
 

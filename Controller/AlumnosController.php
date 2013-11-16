@@ -1,5 +1,7 @@
 <?php
+session_start();
     include_once '../Model/Alumno.php';
+    include_once '../Model/Asistencia.php';
     
     switch ($_REQUEST["Accion"]){
         case "C":
@@ -10,6 +12,9 @@
         case "D":
             if(Delete())
                 header ("Location:../View/consula-alumno.php");
+            break;
+        case "LISTA":
+            Lista();
             break;
         default:
             throw new Exception("No se especificó ninguna acción");
@@ -38,6 +43,23 @@
         }
         
         return true;
+    }
+    
+    function Lista(){
+        $grupo = $_REQUEST["idGrupo"];
+        $alumnos = unserialize($_SESSION["AsistenciaAlumnos"]);
+        $asistencia = $_REQUEST["asistencia"];
+        
+        foreach($alumnos as $alumno){
+            $asis = new Asistencia();
+            $asis->Fecha = date("Y-m-d");
+            $asis->Asistencia = 0;
+            if(in_array($alumno->Id_Alumno, $asistencia))
+                $asis->Asistencia = 1;
+            $alumno->pasarLista($grupo,$asis);
+        }
+        
+        header("Location:../View/Asistencia.php?Grupo={$grupo}");
     }
     
 

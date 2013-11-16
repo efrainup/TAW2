@@ -1,6 +1,6 @@
 <?php
 
-include "AModel.php";
+include_once "AModel.php";
 
 /*
  * To change this template, choose Tools | Templates

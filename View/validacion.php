@@ -55,6 +55,7 @@ mysql_select_db("universidad", $con);
                     if($usuario->administrador){
                         header("Location:indexadmin.php");
                     }else{
+                        
                         header("Location:indexmaestro.php");
                     }
                 }else{

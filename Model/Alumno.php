@@ -63,19 +63,33 @@ class Alumno extends AModel{
      * @abstract 
      * @param bool $asistencia Booleano que indica si asistió o no, NULL para indicar que no se pasó lista
      */
-    public function pasarLista($grupo, $asistencia=NULL){
-        
+    public function pasarLista($grupo,Asistencia $asistencia){
+        parent::AModel();
+        $this->con->next_result();
         $resut = $this->con->query("call readAsistencia('{$this->Id_Alumno}','{$grupo}');");
         
         if($resut){
             $obj = $resut->fetch_array();
+            $resut->free();
+            $this->con->next_result();
             
             $arr = json_decode($obj["Asistencia"]);
             
-            //$arr[] = ;
             
+            $i=0;
+            foreach($arr as $asistencia2){
+                if($asistencia2->Fecha == $asistencia->Fecha){
+                    unset($arr[$i]);
+                }
+                $i++;
+            }           
             
+            $arr[] = $asistencia;
+            $jasoneado = json_encode($arr);
+            $result = $this->con->query("call tomarAsistencia('{$this->Id_Alumno}','{$grupo}','{$jasoneado}');");
             
+            $erro = $this->con->errno;
+            return $erro;
         }else{
             return $this->con->errno;
         }
@@ -84,7 +98,25 @@ class Alumno extends AModel{
         
     }
 
-   
+   public function readAsistencia($idGrupo, $fecha){
+       $this->con->next_result();
+       $result = $this->con->query("call readAsistencia({$this->Id_Alumno},{$idGrupo});");
+       if($result){
+           $arr = array();
+           
+           $row = $result->fetch_array();
+               $decoded = json_decode($row["Asistencia"]);
+               $result->free();
+               $this->con->next_result();
+               foreach ($decoded as $deco){
+                   if($deco->Fecha==$fecha){
+                       return $deco->Asistencia;
+                   }
+               }
+               return 0;
+           }
+       
+   }
 }
 
 ?>
